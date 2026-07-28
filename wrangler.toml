@@ -1,0 +1,25 @@
+# Cloudflare Pages + Workers configuration
+# Deploy: npx @cloudflare/next-on-pages && npx wrangler pages deploy .vercel/output/static
+
+name = "personal-website"
+compatibility_date = "2025-07-28"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+# ---- D1 Database ----
+# Create: npx wrangler d1 create site-db
+# Then copy the database_id here
+[[d1_databases]]
+binding = "DB"
+database_name = "eruem"
+database_id = "f294e05b-30b7-4c2c-aac6-610a68422c77"
+
+# Migrate schema:
+#   npx wrangler d1 execute site-db --remote --file=d1/schema.sql
+
+# ---- Environment Variables (via wrangler or dashboard) ----
+# These are set via Cloudflare Dashboard → Workers & Pages → Settings → Variables
+# or: npx wrangler pages secret put ADMIN_PASSWORD
+[vars]
+ADMIN_USERNAME = "admin"
+
