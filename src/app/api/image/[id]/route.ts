@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 
+export const runtime = "edge";
+
 interface ImageRow {
   id: number;
   data: string;

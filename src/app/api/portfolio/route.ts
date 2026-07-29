@@ -4,6 +4,8 @@ import { requireAuth } from "@/lib/auth-guard";
 import { saveUpload } from "@/lib/upload";
 import type { PortfolioItem } from "@/lib/types";
 
+export const runtime = "edge";
+
 // GET /api/portfolio — public
 export async function GET() {
   const db = getDb();

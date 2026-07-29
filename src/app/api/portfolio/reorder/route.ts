@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db";
 import { requireAuth } from "@/lib/auth-guard";
 
+export const runtime = "edge";
+
 // PUT /api/portfolio/reorder — requires auth
 export async function PUT(request: NextRequest) {
   try {

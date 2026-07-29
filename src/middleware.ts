@@ -4,6 +4,7 @@ import { sessionOptions, SessionData } from "@/lib/auth";
 
 /** Public API routes — no auth required */
 const PUBLIC_API_PREFIXES = ["/api/auth/"];
+const PUBLIC_GET_PREFIXES = ["/api/image/"];
 const PUBLIC_GET_ROUTES = ["/api/site-config", "/api/portfolio"];
 
 export async function middleware(request: NextRequest) {
@@ -31,9 +32,14 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
-    // Public: GET on specific routes
-    if (method === "GET" && PUBLIC_GET_ROUTES.some((route) => pathname === route)) {
-      return NextResponse.next();
+    // Public: GET on specific routes or prefixes
+    if (method === "GET") {
+      if (PUBLIC_GET_ROUTES.some((route) => pathname === route)) {
+        return NextResponse.next();
+      }
+      if (PUBLIC_GET_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
+        return NextResponse.next();
+      }
     }
 
     // All other API routes require auth

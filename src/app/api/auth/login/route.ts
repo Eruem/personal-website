@@ -3,6 +3,8 @@ import { getDb } from "@/lib/db";
 import { getSession } from "@/lib/auth";
 import { MAX_LOGIN_ATTEMPTS, LOCK_DURATION_MINUTES } from "@/lib/constants";
 
+export const runtime = "edge";
+
 // In-memory rate limiting (per-username failed attempts)
 // Note: In Cloudflare Workers, this resets on each deploy/cold start.
 // For production, use KV or Durable Objects for rate limiting.

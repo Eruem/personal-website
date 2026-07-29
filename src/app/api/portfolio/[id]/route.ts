@@ -5,6 +5,8 @@ import { buildUpdateQuery } from "@/lib/db-helpers";
 import { saveUpload, deleteUpload } from "@/lib/upload";
 import type { PortfolioItem } from "@/lib/types";
 
+export const runtime = "edge";
+
 function unauthResponse() {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 }

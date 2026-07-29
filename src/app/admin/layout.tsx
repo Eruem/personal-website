@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "管理端 - 个人主页",
   robots: "noindex, nofollow",

@@ -5,6 +5,8 @@ import { buildUpdateQuery } from "@/lib/db-helpers";
 import { saveUpload, deleteUpload } from "@/lib/upload";
 import type { SiteConfig } from "@/lib/types";
 
+export const runtime = "edge";
+
 // GET /api/site-config — public
 export async function GET() {
   const db = getDb();
